@@ -26,5 +26,19 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/Windows-Settings-Launcher",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Windows-Settings-Launcher.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "Windows Settings Launcher.exe",
+        "url": "https://github.com/tiwut/Windows-Settings-Launcher/releases/download/WindowsSettingsLauncher/Windows.Settings.Launcher_Tiwut.Launcher.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
