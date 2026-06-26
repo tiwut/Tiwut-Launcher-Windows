@@ -82,5 +82,75 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/BasicWebsiteStudio",
+    "description": "A simple, lightweight code editor for basic web development, written in Python using the standard Tkinter GUI toolkit. ",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/BasicWebsiteStudio.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "Basic Website Studio.exe",
+        "url": "https://github.com/tiwut/BasicWebsiteStudio/releases/download/HTML-Editor/BasicWebsiteStudio.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/PyToExePro",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/PyToExePro.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "Py To Exe Pro.exe",
+        "url": "https://github.com/tiwut/PyToExePro/releases/download/python/PyToExePro.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Tiwut-Life-Planner",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Tiwut-Life-Planner.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "runner.exe",
+        "url": "https://github.com/tiwut/Tiwut-Life-Planner/releases/download/Tiwut-Life-Planner/Tiwut-Life-Planner_Tiwut-Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/UE5-Texture-Generator---PRO-8K-16K-Support-",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/UE5-Texture-Generator---PRO-8K-16K-Support-.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "runner.exe",
+        "url": "https://github.com/tiwut/UE5-Texture-Generator---PRO-8K-16K-Support-/releases/download/UE5/UE5.Texture.Generator.-.PRO.8K16K.Support._Tiwut.Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Tiwut-Video-Converter-with-FFmpeg",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Tiwut-Video-Converter-with-FFmpeg.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Tiwut-Video-Converter-with-FFmpeg/releases/download/Tiwut_Video_Converter/Tiwut.Video.Converter.with.FFmpeg_Windows_Tiwut_Launcher.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
