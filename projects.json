@@ -40,5 +40,47 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/System-Cleaner",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/System-Cleaner.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "System Cleaner.exe",
+        "url": "https://github.com/tiwut/System-Cleaner/releases/download/SystemCleaner/System.Cleaner.Windows_Tiwut-Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Windows-Repair-Tool",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Windows-Repair-Tool.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "Windows Repair Tool.exe",
+        "url": "https://github.com/tiwut/Windows-Repair-Tool/releases/download/WindowsRepairTool/WindowsRepairTool_Tiwut_Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Tiwut-Win-AppStore",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Tiwut-Win-AppStore.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "Tiwut Win AppStore.exe",
+        "url": "https://github.com/tiwut/Tiwut-Win-AppStore/releases/download/python/Tiwut.Win.AppStore.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
