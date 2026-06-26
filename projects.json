@@ -152,5 +152,145 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/Media-Metadata",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Media-Metadata.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Media-Metadata/releases/download/MediaMetadata/Media.Metadata_Tiwut_Launcher_Win.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Local-Network-Scanner-Port-Tool",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Local-Network-Scanner-Port-Tool.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Local-Network-Scanner-Port-Tool/releases/download/Local/Local.Network.Scanner.Port.Tool.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/UE5-Stone-Texture-Generator",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/UE5-Stone-Texture-Generator.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/UE5-Stone-Texture-Generator/releases/download/UE5/UE5.Stone.Texture.Generator_Tiwut.Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Midnight-Clock",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Midnight-Clock.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Midnight-Clock/releases/download/Clock/Midnight-Clock_Win_Tiwut_Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Inno-Setup-Script-Generator",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Inno-Setup-Script-Generator.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Inno-Setup-Script-Generator/releases/download/python/Inno.Setup.Script.Generator.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Git-LFS-Control",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Git-LFS-Control.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Git-LFS-Control/releases/download/python/Git-LFS-Control_Win_Tiwut_Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/CPU-Info-Tool",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/CPU-Info-Tool.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/CPU-Info-Tool/releases/download/CPUInfoTool/CPUInfoTool_Tiwut_Launcher.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Image-Converter-Pro",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Image-Converter-Pro.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Image-Converter-Pro/releases/download/Image.Converter.Pro/Image.Converter.Pro.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Python-Tool-Manager",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Python-Tool-Manager.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Python-Tool-Manager/releases/download/python/Python.Tool.Manager.zip",
+        "size": 40475034
+      }
+    ]
+  },
+  {
+    "repo": "tiwut/Internet-Speed-Test",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Internet-Speed-Test.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "main.exe",
+        "url": "https://github.com/tiwut/Internet-Speed-Test/releases/download/InternetSpeedTest/Internet.Speed.Test_Win_Tiwut_Launcher.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
