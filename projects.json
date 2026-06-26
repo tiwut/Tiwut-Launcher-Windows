@@ -1,0 +1,16 @@
+[
+  {
+    "repo": "tiwut/Windows-Taskbar-Dock",
+    "description": "A premium, high-performance native Windows system tray companion inspired by macOS folder status docks. It runs quietly in the notification area, providing fluid, multi-column navigation for your files and directories with GPU-accelerated Acrylic blur backdrops, native rounded corners, and native drop shadows.",
+    "buildSystem": "cmake",
+    "cloneUrl": "https://github.com/tiwut/Windows-Taskbar-Dock.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "WindowsTaskbarDock.exe",
+        "url": "https://github.com/tiwut/Windows-Taskbar-Dock/releases/download/v1.1.1/dist.zip",
+        "size": 40475034
+      }
+    ]
+  }
+]
