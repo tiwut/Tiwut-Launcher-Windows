@@ -1,1 +1,14 @@
-
+{
+  "appName": "Tiwut Launcher",
+  "zipUrl": "https://github.com/tiwut/Tiwut-Launcher-Windows/releases/download/v1.1.1/dist.zip",
+  "installDir": "%LocalAppData%\\TiwutLauncher",
+  "exeName": "dist\\TiwutLauncher.exe",
+  "requireAdmin": false,
+  "requireRestart": false,
+  "iconUrl": "https://github.com/tiwut.ico",
+  "shortcuts": {
+    "desktop": true,
+    "startMenu": true,
+    "taskbar": true
+  }
+}
