@@ -1,6 +1,6 @@
 {
   "appName": "Tiwut Launcher",
-  "zipUrl": "https://github.com/tiwut/Tiwut-Launcher-Windows/releases/download/v1.1.1/dist.zip",
+  "zipUrl": "https://github.com/tiwut/Tiwut-Launcher-Windows/releases/download/v1.1.2/dist.zip",
   "licenseUrl": "https://raw.githubusercontent.com/tiwut/Tiwut-Launcher-Windows/main/LICENSE",
   "installDir": "%LocalAppData%\\TiwutLauncher",
   "exeName": "dist\\TiwutLauncher.exe",
