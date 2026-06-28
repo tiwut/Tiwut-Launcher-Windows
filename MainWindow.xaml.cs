@@ -178,6 +178,15 @@ namespace TiwutLauncher
                         case "reset_launcher_cache":
                             ResetLauncherCache(seq);
                             break;
+                        case "create_desktop_shortcut":
+                            CreateDesktopShortcut(seq, args);
+                            break;
+                        case "create_start_menu_shortcut":
+                            CreateStartMenuShortcut(seq, args);
+                            break;
+                        case "open_url":
+                            OpenUrl(seq, args);
+                            break;
                         default:
                             Resolve(seq, 1, "Function not found");
                             break;
@@ -744,23 +753,148 @@ namespace TiwutLauncher
                 return;
             }
             string path = args[0].GetString() ?? "";
+            bool runAsAdmin = false;
+            if (args.GetArrayLength() >= 2)
+            {
+                runAsAdmin = args[1].GetBoolean();
+            }
 
-            LogToConsole($"Launching process detached: {path}", "system");
+            LogToConsole($"Launching process detached (runAsAdmin={runAsAdmin}): {path}", "system");
 
             try
             {
-                Process.Start(new ProcessStartInfo
+                var psi = new ProcessStartInfo
                 {
                     FileName = path,
                     UseShellExecute = true,
                     WorkingDirectory = Path.GetDirectoryName(path)
-                });
+                };
+                if (runAsAdmin)
+                {
+                    psi.Verb = "runas";
+                }
+                Process.Start(psi);
                 Resolve(seq, 0, "Launched successfully");
             }
             catch (Exception ex)
             {
                 LogToConsole($"Launch failed: {ex.Message}", "error");
                 Resolve(seq, 1, "Launch failed: " + ex.Message);
+            }
+        }
+
+        private void CreateDesktopShortcut(string seq, JsonElement args)
+        {
+            if (args.GetArrayLength() < 2)
+            {
+                Resolve(seq, 1, "Invalid parameters");
+                return;
+            }
+            string repoName = args[0].GetString() ?? "";
+            string binaryPath = args[1].GetString() ?? "";
+            bool runAsAdmin = false;
+            if (args.GetArrayLength() >= 3)
+            {
+                runAsAdmin = args[2].GetBoolean();
+            }
+
+            try
+            {
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                string cleanName = repoName.Split('/').Last();
+                string shortcutPath = Path.Combine(desktopPath, $"{cleanName}.lnk");
+
+                CreateShortcutInternal(shortcutPath, binaryPath, runAsAdmin);
+                Resolve(seq, 0, "Shortcut created on Desktop");
+            }
+            catch (Exception ex)
+            {
+                Resolve(seq, 1, "Failed to create desktop shortcut: " + ex.Message);
+            }
+        }
+
+        private void CreateStartMenuShortcut(string seq, JsonElement args)
+        {
+            if (args.GetArrayLength() < 2)
+            {
+                Resolve(seq, 1, "Invalid parameters");
+                return;
+            }
+            string repoName = args[0].GetString() ?? "";
+            string binaryPath = args[1].GetString() ?? "";
+            bool runAsAdmin = false;
+            if (args.GetArrayLength() >= 3)
+            {
+                runAsAdmin = args[2].GetBoolean();
+            }
+
+            try
+            {
+                string startMenuPath = Environment.GetFolderPath(Environment.SpecialFolder.Programs);
+                string cleanName = repoName.Split('/').Last();
+                string shortcutPath = Path.Combine(startMenuPath, $"{cleanName}.lnk");
+
+                CreateShortcutInternal(shortcutPath, binaryPath, runAsAdmin);
+                Resolve(seq, 0, "Shortcut created in Start Menu");
+            }
+            catch (Exception ex)
+            {
+                Resolve(seq, 1, "Failed to create Start Menu shortcut: " + ex.Message);
+            }
+        }
+
+        private void CreateShortcutInternal(string shortcutPath, string binaryPath, bool runAsAdmin)
+        {
+            string targetPath = binaryPath.Replace("/", "\\");
+
+            Type? t = Type.GetTypeFromProgID("Wscript.Shell");
+            if (t == null) throw new Exception("Wscript.Shell type not found");
+
+            object? shell = Activator.CreateInstance(t);
+            if (shell == null) throw new Exception("Could not create Wscript.Shell instance");
+
+            dynamic dynamicShell = shell;
+            var shortcut = dynamicShell.CreateShortcut(shortcutPath);
+            shortcut.TargetPath = targetPath;
+            shortcut.WorkingDirectory = Path.GetDirectoryName(targetPath);
+            shortcut.IconLocation = targetPath;
+            shortcut.Save();
+
+            if (runAsAdmin)
+            {
+                using (var fs = new FileStream(shortcutPath, FileMode.Open, FileAccess.ReadWrite))
+                {
+                    fs.Seek(21, SeekOrigin.Begin);
+                    int b = fs.ReadByte();
+                    if (b != -1)
+                    {
+                        fs.Seek(21, SeekOrigin.Begin);
+                        fs.WriteByte((byte)(b | 0x20));
+                    }
+                }
+            }
+        }
+
+        private void OpenUrl(string seq, JsonElement args)
+        {
+            if (args.GetArrayLength() < 1)
+            {
+                Resolve(seq, 1, "Missing URL");
+                return;
+            }
+            string url = args[0].GetString() ?? "";
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+                Resolve(seq, 0, "URL opened");
+            }
+            catch (Exception ex)
+            {
+                Resolve(seq, 1, "Failed to open URL: " + ex.Message);
             }
         }
 

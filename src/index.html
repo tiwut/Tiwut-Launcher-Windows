@@ -1130,6 +1130,108 @@
       background: rgba(255, 255, 255, 0.05);
       color: white !important;
     }
+
+    .options-group-card {
+      background: rgba(30, 41, 59, 0.3);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .options-group-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .option-checkbox-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      position: relative;
+    }
+
+    .option-checkbox-container input {
+      display: none;
+    }
+
+    .option-custom-checkbox {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      background: rgba(0, 0, 0, 0.15);
+      flex-shrink: 0;
+    }
+
+    .option-checkbox-container:hover .option-custom-checkbox {
+      border-color: var(--primary);
+      box-shadow: 0 0 8px rgba(129, 140, 248, 0.3);
+    }
+
+    .option-checkbox-container input:checked+.option-custom-checkbox {
+      background: var(--gradient-main);
+      border-color: transparent;
+      box-shadow: 0 0 10px rgba(192, 132, 252, 0.4);
+    }
+
+    .option-custom-checkbox::after {
+      content: '✓';
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 900;
+      display: none;
+    }
+
+    .option-checkbox-container input:checked+.option-custom-checkbox::after {
+      display: block;
+    }
+
+    .option-btn-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn-option-small {
+      flex: 1;
+      padding: 8px 12px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .btn-option-small:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-option-small:active {
+      transform: scale(0.96);
+    }
   </style>
   <link rel="icon" type="image/png" href="https://github.com/tiwut.png">
 </head>
@@ -1311,6 +1413,10 @@
 
           </div>
 
+          <div id="app-options-block" class="options-group-card" style="display: none;">
+
+          </div>
+
           <div id="assets-block" style="display:none;">
             <div class="section-title" id="assets-title">Release Assets</div>
             <div id="asset-list" class="asset-list">
@@ -1386,9 +1492,12 @@
     window.get_installed_apps = () => callRPC("get_installed_apps");
     window.download_file = (url, filename, repoName) => callRPC("download_file", url, filename, repoName);
     window.build_repo = (cloneUrl, repoName) => callRPC("build_repo", cloneUrl, repoName);
-    window.launch_app = (repoName) => callRPC("launch_app", repoName);
+    window.launch_app = (binaryPath, runAsAdmin) => callRPC("launch_app", binaryPath, runAsAdmin);
     window.uninstall_app = (repoName, binaryPath) => callRPC("uninstall_app", repoName, binaryPath);
     window.reset_launcher_cache = () => callRPC("reset_launcher_cache");
+    window.create_desktop_shortcut = (repoName, binaryPath, runAsAdmin) => callRPC("create_desktop_shortcut", repoName, binaryPath, runAsAdmin);
+    window.create_start_menu_shortcut = (repoName, binaryPath, runAsAdmin) => callRPC("create_start_menu_shortcut", repoName, binaryPath, runAsAdmin);
+    window.open_url = (url) => callRPC("open_url", url);
 
     let state = {
       repos: [],
@@ -2107,16 +2216,57 @@
         }
       }
 
+      const optionsBlock = document.getElementById('app-options-block');
+      if (optionsBlock) {
+        if (isInstalled) {
+          const app = state.installed[repo.name] || {};
+          const runAsAdmin = !!app.runAsAdmin;
+          optionsBlock.style.display = 'flex';
+          optionsBlock.innerHTML = `
+            <div class="options-group-title">Options</div>
+            
+            <label class="option-checkbox-container">
+              <input type="checkbox" id="run-as-admin-check" ${runAsAdmin ? 'checked' : ''} onchange="toggleRunAsAdmin('${repo.name}', this.checked)">
+              <span class="option-custom-checkbox"></span>
+              <span>🛡️ Start with Admin</span>
+            </label>
+            
+            <div class="option-btn-row">
+              <button class="btn-option-small" onclick="createDesktopShortcut('${repo.name}')" title="Create Desktop Shortcut">
+                🖥️ Desktop
+              </button>
+              <button class="btn-option-small" onclick="createStartMenuShortcut('${repo.name}')" title="Create Start Menu Shortcut">
+                📂 Start Menu
+              </button>
+            </div>
+            
+            <button class="btn-option-small" style="width: 100%;" onclick="openRepoUrl('${repo.htmlUrl}')">
+              🌐 Open GitHub Repo
+            </button>
+          `;
+        } else {
+          optionsBlock.style.display = 'flex';
+          optionsBlock.innerHTML = `
+            <div class="options-group-title">Options</div>
+            <button class="btn-option-small" style="width: 100%;" onclick="openRepoUrl('${repo.htmlUrl}')">
+              🌐 Open GitHub Repo
+            </button>
+          `;
+        }
+      }
+
       if (state.activeAction) {
         const buttons = actionsBlock.querySelectorAll('button');
         buttons.forEach(btn => btn.disabled = true);
+        if (optionsBlock) {
+          const optButtons = optionsBlock.querySelectorAll('button, input');
+          optButtons.forEach(btn => btn.disabled = true);
+        }
       }
     }
 
     async function startReleaseDownload(repo, asset) {
       if (state.activeAction) return;
-
-      // Removed Linux Wine emulation warning for the Windows edition.
 
       state.activeAction = { repoName: repo.name, type: 'download' };
       state.tempUpdateVersion = asset.version;
@@ -2176,11 +2326,69 @@
           throw new Error("Application executable or bundle path could not be resolved.");
         }
 
-        const res = await window.launch_app(path);
+        const runAsAdmin = !!app.runAsAdmin;
+        const res = await window.launch_app(path, runAsAdmin);
         logLine(`Launch details: ${res}`, "success");
       } catch (err) {
         logLine(`Failed to launch app: ${err.message || err}`, "error");
         showToast(`Failed to launch: ${err.message || err}`, "error");
+      }
+    }
+
+    async function toggleRunAsAdmin(repoName, isChecked) {
+      if (state.installed[repoName]) {
+        state.installed[repoName].runAsAdmin = isChecked;
+        await window.save_config("installed", JSON.stringify(state.installed));
+        logLine(`Updated admin launch preference for ${repoName} to ${isChecked}`, "system");
+        showToast(`Admin mode ${isChecked ? 'enabled' : 'disabled'}`, "success");
+      }
+    }
+
+    async function createDesktopShortcut(repoName) {
+      try {
+        const app = state.installed[repoName];
+        if (!app) return;
+        let path = app.binaryPath || "";
+        if (!path || path.trim() === "") {
+          path = await window.detect_installed_app(repoName);
+        }
+        if (!path) {
+          showToast("Cannot locate application binary to create shortcut", "error");
+          return;
+        }
+        const runAsAdmin = !!app.runAsAdmin;
+        const res = await window.create_desktop_shortcut(repoName, path, runAsAdmin);
+        showToast(res, "success");
+        logLine(`Shortcut created: ${res}`, "success");
+      } catch (err) {
+        showToast(`Failed to create shortcut: ${err}`, "error");
+      }
+    }
+
+    async function createStartMenuShortcut(repoName) {
+      try {
+        const app = state.installed[repoName];
+        if (!app) return;
+        let path = app.binaryPath || "";
+        if (!path || path.trim() === "") {
+          path = await window.detect_installed_app(repoName);
+        }
+        if (!path) {
+          showToast("Cannot locate application binary to create shortcut", "error");
+          return;
+        }
+        const runAsAdmin = !!app.runAsAdmin;
+        const res = await window.create_start_menu_shortcut(repoName, path, runAsAdmin);
+        showToast(res, "success");
+        logLine(`Shortcut created: ${res}`, "success");
+      } catch (err) {
+        showToast(`Failed to create shortcut: ${err}`, "error");
+      }
+    }
+
+    function openRepoUrl(url) {
+      if (url) {
+        window.open_url(url);
       }
     }
 
