@@ -292,5 +292,19 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/Bluetooth-Audio-Receiver",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Bluetooth-Audio-Receiver.git",
+    "releases": [
+      {
+        "version": "v1.0.0",
+        "name": "BluetoothAudioReceiver.exe",
+        "url": "https://github.com/tiwut/Bluetooth-Audio-Receiver/releases/download/v1.0.0/dist.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
