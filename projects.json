@@ -306,5 +306,19 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/Startup-Manager",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Startup-Manager.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "AppAutoStart.exe",
+        "url": "https://github.com/tiwut/Startup-Manager/releases/download/v1.1.1/dist.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
