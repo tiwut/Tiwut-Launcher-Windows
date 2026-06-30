@@ -320,5 +320,19 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/Chromecast-Wireless-Display-for-Windows",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/Chromecast-Wireless-Display-for-Windows.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "ChromecastManager.exe",
+        "url": "https://github.com/tiwut/Chromecast-Wireless-Display-for-Windows/releases/download/v1.1.1/dist.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
