@@ -334,5 +334,19 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/SoundMgr-Windows-Audio-Manager",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/SoundMgr-Windows-Audio-Manager.git",
+    "releases": [
+      {
+        "version": "v1.1.1",
+        "name": "SoundMgr.exe",
+        "url": "https://github.com/tiwut/SoundMgr-Windows-Audio-Manager/releases/download/v1.1.1/dist.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
