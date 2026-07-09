@@ -370,7 +370,7 @@
     "cloneUrl": "https://github.com/tiwut/Simple-Secure-Browser.git",
     "releases": [
       {
-        "version": "v1.1.1",
+        "version": "v1.1.2",
         "name": "SimpleBrowser.exe",
         "url": "https://github.com/tiwut/Simple-Secure-Browser/releases/download/v1.1.1/dist.zip",
         "size": 40475034
