@@ -10,6 +10,12 @@
         "name": "WindowsTaskbarDock.exe",
         "url": "https://github.com/tiwut/Windows-Taskbar-Dock/releases/download/v1.1.1/dist.zip",
         "size": 40475034
+      },
+      {
+        "version": "v2.1.0",
+        "name": "WindowsTaskbarDock.exe",
+        "url": "https://github.com/tiwut/Windows-Taskbar-Dock/releases/download/v2.1.0/dist.zip",
+        "size": 40475034
       }
     ]
   },
