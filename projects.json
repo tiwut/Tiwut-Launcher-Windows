@@ -396,5 +396,19 @@
         "size": 40475034
       }
     ]
+  },
+  {
+    "repo": "tiwut/App-Killer",
+    "description": "",
+    "buildSystem": "none",
+    "cloneUrl": "https://github.com/tiwut/App-Killer.git",
+    "releases": [
+      {
+        "version": "v1.0.0",
+        "name": "AppKiller.exe",
+        "url": "https://github.com/tiwut/App-Killer/releases/download/v1.0.0/dist.zip",
+        "size": 40475034
+      }
+    ]
   }
 ]
